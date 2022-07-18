@@ -254,7 +254,6 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
-        <DCC_UnitSearchPath>..\..\sources;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_Build>1</VerInfo_Build>
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
     </PropertyGroup>
@@ -539,24 +538,24 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\libtensorflowlite_gpu_jni.so" Configuration="Release" Class="File">
+                <DeployFile LocalName="..\..\Win64\Release\face_detection_160.tflite" Configuration="Release" Class="File">
+                    <Platform Name="Android64">
+                        <RemoteDir>.\assets\internal</RemoteDir>
+                        <RemoteName>face_detection_160.tflite</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\libtensorflowlite_gpu_jni.so" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>.\assets\internal</RemoteDir>
                         <RemoteName>libtensorflowlite_gpu_jni.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\libtensorflowlite_jni.so" Configuration="Release" Class="File">
+                <DeployFile LocalName="..\libtensorflowlite_jni.so" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>.\assets\internal</RemoteDir>
                         <RemoteName>libtensorflowlite_jni.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\models\face_detection_160.tflite" Configuration="Release" Class="File">
-                    <Platform Name="Android64">
-                        <RemoteDir>.\assets\internal</RemoteDir>
-                        <RemoteName>face_detection_160.tflite</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
