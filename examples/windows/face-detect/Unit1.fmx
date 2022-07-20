@@ -1,0 +1,186 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'FaceDetect'
+  ClientHeight = 693
+  ClientWidth = 816
+  Position = DesktopCenter
+  Quality = HighQuality
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object ImageMain: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 800.000000000000000000
+    Size.Height = 600.000000000000000000
+    Size.PlatformDefault = False
+    WrapMode = Stretch
+    object Label4: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Family]
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 794.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claOrangered
+      TabOrder = 0
+    end
+  end
+  object Button1: TButton
+    Anchors = [akLeft, akBottom]
+    Position.X = 18.000000000000000000
+    Position.Y = 655.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Open Image'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Anchors = [akLeft, akBottom]
+    Position.X = 117.000000000000000000
+    Position.Y = 655.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Detect'
+    OnClick = Button2Click
+  end
+  object OpenDialog: TOpenDialog
+    Left = 139
+    Top = 230
+  end
+  object ComboBox1: TComboBox
+    DropDownCount = 18
+    Items.Strings = (
+      '0,1'
+      '0,2'
+      '0,3'
+      '0,4'
+      '0,5'
+      '0,6'
+      '0,7'
+      '0,8'
+      '0,9')
+    ItemIndex = 4
+    Position.X = 233.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+  end
+  object Label1: TLabel
+    AutoSize = True
+    Position.X = 163.000000000000000000
+    Position.Y = 11.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Probability'
+    TabOrder = 7
+  end
+  object ComboBox2: TComboBox
+    Items.Strings = (
+      '2'
+      '4'
+      '8')
+    ItemIndex = 2
+    Position.X = 97.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    OnChange = ComboBox2Change
+  end
+  object Label2: TLabel
+    Position.X = 12.000000000000000000
+    Position.Y = 11.000000000000000000
+    Size.Width = 85.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Thread Count'
+    TabOrder = 9
+  end
+  object ComboBox3: TComboBox
+    Items.Strings = (
+      '160'
+      '192'
+      '256'
+      '320'
+      '480'
+      '640')
+    ItemIndex = 5
+    Position.X = 362.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 52.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    OnChange = ComboBox3Change
+  end
+  object Label3: TLabel
+    Position.X = 298.000000000000000000
+    Position.Y = 11.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Input Size'
+    TabOrder = 13
+  end
+  object Label5: TLabel
+    Position.X = 436.000000000000000000
+    Position.Y = 11.000000000000000000
+    Size.Width = 54.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Batch Size'
+    TabOrder = 16
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    Text = '1'
+    Position.X = 498.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ImageList: TImageList
+    Source = <
+      item
+        MultiResBitmap = <>
+        Name = 'Source'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'FaceSegment'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'IrisLeft'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'IrisRight'
+      end>
+    Destination = <>
+    Left = 138
+    Top = 300
+  end
+end
