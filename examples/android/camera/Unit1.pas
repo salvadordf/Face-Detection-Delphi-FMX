@@ -13,6 +13,7 @@ type
     Image1: TImage;
     CameraComponent1: TCameraComponent;
     Button1: TButton;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure CameraComponent1SampleBufferReady(Sender: TObject;
       const ATime: TMediaTime);
@@ -190,6 +191,9 @@ begin
   end;
 end;
 
+var
+  FTickCount: Int32 = 0;
+
 procedure TForm1.DisplayCameraPreviewFrame;
 var
   i, X, Y, FPixel: DWORD;
@@ -199,17 +203,20 @@ var
   FInputData: PInputDataFaceDetection;
   FOutputData: POutputDataFaceDetection;
   FRect: TRectF;
+  FTickCountInference: Int32;
   FFaceList: TFaceList;
 begin
   CameraComponent1.SampleBufferToBitmap(Image1.Bitmap, False);
 
-  FBitmap := TBitmap.Create;
-  try
-    FBitmap.Width := 160;
-    FBitmap.Height := 160;
+  FTickCountInference := TThread.GetTickCount;
 
-    Image1.Bitmap.Canvas.BeginScene;
+  Image1.Bitmap.Canvas.BeginScene;
+  try
+    FBitmap := TBitmap.Create;
     try
+      FBitmap.Width := 160;
+      FBitmap.Height := 160;
+
       FBitmap.Canvas.BeginScene;
       try
         if Image1.Bitmap.Height > Image1.Width then
@@ -236,53 +243,49 @@ begin
       finally
         FBitmap.Canvas.EndScene;
       end;
-    finally
-      Image1.Bitmap.Canvas.EndScene;
-    end;
 
-    if (FBitmap.Map(TMapAccess.ReadWrite, FBitmapData)) then
-    begin
-      try
-        GetMem(FInputData, FaceDetection.Input.Tensors[0].DataSize);
+      if (FBitmap.Map(TMapAccess.ReadWrite, FBitmapData)) then
+      begin
         try
-          FPixel := 0;
+          GetMem(FInputData, FaceDetection.Input.Tensors[0].DataSize);
+          try
+            FPixel := 0;
 
-          for Y := 0 to FaceDetectionInputSize - 1 do
-          begin
-            FColors := PAlphaColorArray(FBitmapData.GetScanline(Y));
-
-            for X := 0 to FaceDetectionInputSize - 1 do
+            for Y := 0 to FaceDetectionInputSize - 1 do
             begin
-              FInputData[FPixel][0] := (TAlphaColorRec(FColors[X]).R / 255);
-              FInputData[FPixel][1] := (TAlphaColorRec(FColors[X]).G / 255);
-              FInputData[FPixel][2] := (TAlphaColorRec(FColors[X]).B / 255);
+              FColors := PAlphaColorArray(FBitmapData.GetScanline(Y));
 
-              Inc(FPixel);
+              for X := 0 to FaceDetectionInputSize - 1 do
+              begin
+                FInputData[FPixel][0] := (TAlphaColorRec(FColors[X]).R / 255);
+                FInputData[FPixel][1] := (TAlphaColorRec(FColors[X]).G / 255);
+                FInputData[FPixel][2] := (TAlphaColorRec(FColors[X]).B / 255);
+
+                Inc(FPixel);
+              end;
             end;
+
+            FaceDetection.SetInputData(0, FInputData, FaceDetection.Input.Tensors[0].DataSize);
+          finally
+            FreeMem(FInputData);
           end;
 
-          FaceDetection.SetInputData(0, FInputData, FaceDetection.Input.Tensors[0].DataSize);
         finally
-          FreeMem(FInputData);
+          FBitmap.Unmap(FBitmapData);
         end;
-
-      finally
-        FBitmap.Unmap(FBitmapData);
       end;
-    end;
 
-    FaceDetection.Inference;
+      FaceDetection.Inference;
 
-    GetMem(FOutputData, FaceDetection.Output.Tensors[0].DataSize);
-    try
-      FaceDetection.GetOutputData(0, FOutputData, FaceDetection.Output.Tensors[0].DataSize);
+      GetMem(FOutputData, FaceDetection.Output.Tensors[0].DataSize);
+      try
+        FaceDetection.GetOutputData(0, FOutputData, FaceDetection.Output.Tensors[0].DataSize);
 
-      FFaceList := GetFaceList(0.5, 10, FOutputData);
+        FFaceList := GetFaceList(0.8, 10, FOutputData);
 
-      if FFaceList.Count > 0 then
-      begin
-        Image1.Bitmap.Canvas.BeginScene;
-        try
+        if FFaceList.Count > 0 then
+        begin
+
           Image1.Bitmap.Canvas.Stroke.Color := TAlphaColorRec.Red;
           Image1.Bitmap.Canvas.Stroke.Thickness := 2.0;
 
@@ -297,16 +300,23 @@ begin
               0, 0, AllCorners, 1);
           end;
 
-        finally
-          Image1.Bitmap.Canvas.EndScene;
         end;
-      end;
 
+      finally
+        FreeMem(FOutputData);
+      end;
     finally
-      FreeMem(FOutputData);
+      FBitmap.Free;
     end;
   finally
-    FBitmap.Free;
+    Image1.Bitmap.Canvas.EndScene;
+  end;
+
+  if TThread.GetTickCount - FTickCount >= 1000 then
+  begin
+    Label1.Text := 'FPS: ' + IntToStr(Round(1 / ((TThread.GetTickCount - FTickCountInference) / 1000)));
+
+    FTickCount := TThread.GetTickCount;
   end;
 end;
 
