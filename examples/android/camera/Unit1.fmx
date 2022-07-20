@@ -1,0 +1,41 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 620
+  ClientWidth = 480
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 464.000000000000000000
+    Size.Height = 552.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button1: TButton
+    Anchors = [akLeft, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 568.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Start'
+    OnClick = Button1Click
+  end
+  object CameraComponent1: TCameraComponent
+    Kind = FrontCamera
+    OnSampleBufferReady = CameraComponent1SampleBufferReady
+    Left = 77
+    Top = 51
+  end
+end
