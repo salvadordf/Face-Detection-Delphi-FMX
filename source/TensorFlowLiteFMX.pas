@@ -15,6 +15,10 @@ uses
 
 {$IFDEF ANDROID}
 
+
+type
+  Float32 = Single;
+
 var
   LibraryPath: String = 'libtensorflowlite_jni.so'; // TensorFlow Lite v2.9.0
   LibraryPathGPU: String = 'libtensorflowlite_gpu_jni.so'; // TensorFlow Lite GPU v2.9.0
