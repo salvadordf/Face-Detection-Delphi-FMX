@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'FaceDetect'
   ClientHeight = 693
-  ClientWidth = 816
+  ClientWidth = 796
   Position = DesktopCenter
   Quality = HighQuality
   FormFactor.Width = 320
@@ -19,7 +19,7 @@ object Form1: TForm1
     Anchors = [akLeft, akTop, akRight, akBottom]
     Position.X = 8.000000000000000000
     Position.Y = 40.000000000000000000
-    Size.Width = 800.000000000000000000
+    Size.Width = 780.000000000000000000
     Size.Height = 600.000000000000000000
     Size.PlatformDefault = False
     WrapMode = Stretch
@@ -28,7 +28,7 @@ object Form1: TForm1
       StyledSettings = [Family]
       Position.X = 5.000000000000000000
       Position.Y = 5.000000000000000000
-      Size.Width = 794.000000000000000000
+      Size.Width = 774.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -75,7 +75,7 @@ object Form1: TForm1
       '0,7'
       '0,8'
       '0,9')
-    ItemIndex = 4
+    ItemIndex = 5
     Position.X = 233.000000000000000000
     Position.Y = 8.000000000000000000
     Size.Width = 50.000000000000000000
@@ -123,7 +123,8 @@ object Form1: TForm1
       '256'
       '320'
       '480'
-      '640')
+      '640'
+      '800')
     ItemIndex = 5
     Position.X = 362.000000000000000000
     Position.Y = 8.000000000000000000

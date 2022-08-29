@@ -64,17 +64,18 @@ var
   // 320, 6300 - image with 320x320 pixels, inference time 0.031 sec, 32 frame per sec, high detection quality
   // 480, 14175 - image with 480x480 pixels, inference time 0.064 sec, 15 frame per sec, high detection quality
   // 640, 25200 - image with 640x640 pixels, inference time 0.109 sec, 9 frame per sec, high quality detection
+  // 800, 39375 - image with 800x800pixels, inference time 0.109 sec, 9 frame per sec, high quality detection
 
   FaceDetectionInputSize: Int32 = 640;
   FaceDetectionOutputSize: Int32 = 25200;
 
 type
   PInputDataFaceDetection = ^TInputDataFaceDetection;
-  TInputDataFaceDetection = array [0 .. 640 * 640 - 1] of array [0 .. 3 - 1] of Float32;
+  TInputDataFaceDetection = array [0 .. 800 * 800 - 1] of array [0 .. 3 - 1] of Float32;
 
 type
   POutputDataFaceDetection = ^TOutputDataFaceDetection;
-  TOutputDataFaceDetection = array [0 .. 25200 - 1] of array [0 .. 6 - 1] of Float32;
+  TOutputDataFaceDetection = array [0 .. 39375 - 1] of array [0 .. 6 - 1] of Float32;
 
 type
   TFace = record
@@ -90,7 +91,7 @@ type
 
 var
   HideProbability: Boolean = False;
-  BatchSize: Int32 = 100;
+  BatchSize: Int32 = 1;
 
 procedure TForm1.LoadImage;
 begin
@@ -351,7 +352,7 @@ begin
 
           FFaceList := GetFaceList(StrToFloat(ComboBox1.Items[ComboBox1.ItemIndex]), 10, FOutputData);
 
-          if FBatch = BatchSize-1 then
+          if FBatch = BatchSize - 1 then
           begin
             ImageMain.Bitmap.Canvas.BeginScene;
             try
@@ -360,7 +361,7 @@ begin
 
               if FFaceList.Count > 0 then
               begin
-                Label4.Text := 'detect time: ' + FloatToStr((TThread.GetTickCount64 - FTickCountInference) / 1000/BatchSize ) + ', nms time: ' + FloatToStr((TThread.GetTickCount64 - FTickCountNMS) / 1000) + ', face count: ' + IntToStr(FFaceList.Count);
+                Label4.Text := 'detect time: ' + FloatToStr((TThread.GetTickCount64 - FTickCountInference) / 1000 / BatchSize) + ', nms time: ' + FloatToStr((TThread.GetTickCount64 - FTickCountNMS) / 1000) + ', face count: ' + IntToStr(FFaceList.Count);
 
                 ImageMain.Bitmap.Canvas.Font.Size := 11;
                 ImageMain.Bitmap.Canvas.MeasureText(FRect, '0,00', False, [], TTextAlign.Leading, TTextAlign.Leading);
@@ -387,7 +388,6 @@ begin
         finally
           FreeMem(FOutputData);
         end;
-
 
       end;
     finally
@@ -434,6 +434,12 @@ begin
         FaceDetectionInputSize := 640;
         FaceDetectionOutputSize := 25200;
         FaceDetection.LoadModel(ModelsPath + 'face_detection_640.tflite', StrToInt(ComboBox2.Items[ComboBox2.ItemIndex]));
+      end;
+    6:
+      begin
+        FaceDetectionInputSize := 800;
+        FaceDetectionOutputSize := 39375;
+        FaceDetection.LoadModel(ModelsPath + 'face_detection_800.tflite', StrToInt(ComboBox2.Items[ComboBox2.ItemIndex]));
       end;
   end;
 end;
