@@ -7,7 +7,7 @@ Windows 10 x64, inference time (0.0087 sec / 8.7 ms), 110 fps on CPU, AMD Ryzen 
 ![screen_04](https://user-images.githubusercontent.com/66531939/187112313-51a6532f-2af3-4449-afb3-61228b092b78.jpg)
 
 <b>TODO</b>
-- [ ] Train lite models x2 faster, less accurate (very slow training at the moment)
+- [ ] Train lite models, x2 faster, less accurate (very slow training at the moment)
 - [ ] Increase even more accuracy (very slow training at the moment)
 - [ ] Windows GPU support
 - [ ] Face alignment, face recognition
