@@ -134,7 +134,7 @@ begin
           ImageList.Source[0].MultiResBitmap[0].Bitmap,
           RectF(0, 0, ImageList.Source[0].MultiResBitmap[0].Bitmap.Width, ImageList.Source[0].MultiResBitmap[0].Bitmap.Height),
           RectF(0, 0, FaceDetectionInputSize, ImageList.Source[0].MultiResBitmap[0].Bitmap.Height / (ImageList.Source[0].MultiResBitmap[0].Bitmap.Width / FaceDetectionInputSize)),
-          1, False);
+          1, True);
       end
       else
       begin
@@ -142,7 +142,7 @@ begin
           ImageList.Source[0].MultiResBitmap[0].Bitmap,
           RectF(0, 0, ImageList.Source[0].MultiResBitmap[0].Bitmap.Width, ImageList.Source[0].MultiResBitmap[0].Bitmap.Height),
           RectF(0, 0, ImageList.Source[0].MultiResBitmap[0].Bitmap.Width / (ImageList.Source[0].MultiResBitmap[0].Bitmap.Height / FaceDetectionInputSize), FaceDetectionInputSize),
-          1, False);
+          1, True);
       end;
 
     finally
