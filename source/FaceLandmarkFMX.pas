@@ -54,14 +54,14 @@ var
   FBitmapData: TBitmapData;
   FBitmap: TBitmap;
   FStatus: TFLiteStatus;
+  FScale: Float32;
+  FRect: TRectF;
 begin
   SetLength(Result.Points, 0);
   Result.Count := 0;
 
   if not Assigned(Bitmap) then
-  begin
     Exit;
-  end;
 
   FBitmap := TBitmap.Create;
 
@@ -74,34 +74,16 @@ begin
 
     Bitmap.Canvas.BeginScene;
     try
-      if (Bitmap.Width <> FaceLandmarkInputSize) and (Bitmap.Height <> FaceLandmarkInputSize) then
-      begin
-        if Bitmap.Width > Bitmap.Height then
-        begin
-          FBitmap.Canvas.DrawBitmap(
-            Bitmap,
-            Bitmap.BoundsF,
-            RectF(0, 0, FaceLandmarkInputSize, Bitmap.Height / (Bitmap.Width / FaceLandmarkInputSize)),
-            1, False);
-        end
-        else
-        begin
-          FBitmap.Canvas.DrawBitmap(
-            Bitmap,
-            Bitmap.BoundsF,
-            RectF(0, 0, Bitmap.Width / (Bitmap.Height / FaceLandmarkInputSize), FaceLandmarkInputSize),
-            1, False);
-        end;
-      end
-      else
-      begin
-        FBitmap.Canvas.DrawBitmap(
-          Bitmap,
-          Bitmap.BoundsF,
-          Bitmap.BoundsF,
-          1, False);
-      end;
+      FRect.Left := 0;
+      FRect.Top := 0;
+      FRect.Width := FaceLandmarkInputSize;
+      FRect.Height := FaceLandmarkInputSize;
 
+      FBitmap.Canvas.DrawBitmap(
+        Bitmap,
+        Bitmap.BoundsF,
+        FRect,
+        1, False);
     finally
       Bitmap.Canvas.EndScene;
     end;
