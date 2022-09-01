@@ -427,10 +427,10 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\models\face_detection_160.tflite" Configuration="Release" Class="File">
+                <DeployFile LocalName="..\..\..\models\face_detection_192.tflite" Configuration="Release" Class="File">
                     <Platform Name="Android64">
                         <RemoteDir>.\assets\internal</RemoteDir>
-                        <RemoteName>face_detection_160.tflite</RemoteName>
+                        <RemoteName>face_detection_192.tflite</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

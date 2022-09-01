@@ -33,7 +33,7 @@ object Form1: TForm1
     Anchors = [akLeft, akBottom]
     Position.X = 8.000000000000000000
     Position.Y = 568.000000000000000000
-    Size.Width = 81.000000000000000000
+    Size.Width = 96.000000000000000000
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2

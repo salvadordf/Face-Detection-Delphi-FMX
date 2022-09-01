@@ -39,16 +39,16 @@ var
   FaceDetection: TTensorFlowLiteFMX;
 
 var
-  FaceDetectionInputSize: Int32 = 160;
-  FaceDetectionOutputSize: Int32 = 1575;
+  FaceDetectionInputSize: Int32 = 192;
+  FaceDetectionOutputSize: Int32 = 2268;
 
 type
   PInputDataFaceDetection = ^TInputDataFaceDetection;
-  TInputDataFaceDetection = array [0 .. 160 * 160 - 1] of array [0 .. 3 - 1] of Float32;
+  TInputDataFaceDetection = array [0 .. 192 * 192 - 1] of array [0 .. 3 - 1] of Float32;
 
 type
   POutputDataFaceDetection = ^TOutputDataFaceDetection;
-  TOutputDataFaceDetection = array [0 .. 1575 - 1] of array [0 .. 6 - 1] of Float32;
+  TOutputDataFaceDetection = array [0 .. 2268 - 1] of array [0 .. 6 - 1] of Float32;
 
 type
   TFace = record
@@ -152,7 +152,6 @@ begin
       begin
         for i := 0 to Length(Result.Faces) - 1 do
         begin
-
           if (IntersectRect(Result.Faces[i].Rect, FListNMS[Y].Rect)) then
           begin
             if ((Abs(Result.Faces[i].Rect.Top - FListNMS[Y].Rect.Top) < Result.Faces[i].Rect.Height / 2)) and
@@ -214,31 +213,31 @@ begin
   try
     FBitmap := TBitmap.Create;
     try
-      FBitmap.Width := 160;
-      FBitmap.Height := 160;
+      FBitmap.Width := 192;
+      FBitmap.Height := 192;
 
       FBitmap.Canvas.BeginScene;
       try
-        if Image1.Bitmap.Height > Image1.Width then
+        if Image1.Bitmap.Width > Image1.Height then
         begin
-          FRect.Left := (FaceDetectionInputSize / 2) - (FaceDetectionInputSize / (Image1.Bitmap.Height / Image1.Bitmap.Width)) / 2;
+          FRect.Left := 0;
           FRect.Top := 0;
-          FRect.Width := FaceDetectionInputSize - FRect.Left * 2;
-          FRect.Height := FaceDetectionInputSize;
+          FRect.Right := FaceDetectionInputSize;
+          FRect.Bottom := Image1.Bitmap.Height / (Image1.Bitmap.Width / FaceDetectionInputSize);
         end
         else
         begin
           FRect.Left := 0;
-          FRect.Top := (FaceDetectionInputSize / 2) - (FaceDetectionInputSize / (Image1.Bitmap.Width / Image1.Bitmap.Height)) / 2;
-          FRect.Width := FaceDetectionInputSize;
-          FRect.Height := FaceDetectionInputSize - FRect.Top * 2;
+          FRect.Top := 0;
+          FRect.Right := Image1.Bitmap.Width / (Image1.Bitmap.Height / FaceDetectionInputSize);
+          FRect.Bottom := FaceDetectionInputSize;
         end;
 
         FBitmap.Canvas.DrawBitmap(
           Image1.Bitmap,
-          RectF(0, 0, Image1.Bitmap.Width, Image1.Bitmap.Height),
+          Image1.Bitmap.BoundsF,
           FRect,
-          1, False);
+          1, True);
 
       finally
         FBitmap.Canvas.EndScene;
@@ -285,7 +284,6 @@ begin
 
         if FFaceList.Count > 0 then
         begin
-
           Image1.Bitmap.Canvas.Stroke.Color := TAlphaColorRec.Red;
           Image1.Bitmap.Canvas.Stroke.Thickness := 2.0;
 
@@ -301,7 +299,6 @@ begin
           end;
 
         end;
-
       finally
         FreeMem(FOutputData);
       end;
@@ -314,14 +311,15 @@ begin
 
   if TThread.GetTickCount - FTickCount >= 1000 then
   begin
-    Label1.Text := 'FPS: ' + IntToStr(Round(1 / ((TThread.GetTickCount - FTickCountInference) / 1000)));
+    Label1.Text := 'Camera:' + IntToStr(Image1.MultiResBitmap[0].Bitmap.Width) + 'X' + IntToStr(Image1.MultiResBitmap[0].Bitmap.Height) +
+      ', Input Size:' + IntToStr(FaceDetectionInputSize) +
+      ', FPS:' + IntToStr(Round(1 / ((TThread.GetTickCount - FTickCountInference) / 1000)));
 
     FTickCount := TThread.GetTickCount;
   end;
 end;
 
-procedure TForm1.CameraComponent1SampleBufferReady(Sender: TObject;
-  const ATime: TMediaTime);
+procedure TForm1.CameraComponent1SampleBufferReady(Sender: TObject; const ATime: TMediaTime);
 begin
   TThread.Synchronize(TThread.CurrentThread, DisplayCameraPreviewFrame);
 end;
@@ -329,14 +327,15 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Image1.MultiResBitmap.Add;
-  Image1.MultiResBitmap[0].Bitmap.Width := 800;
-  Image1.MultiResBitmap[0].Bitmap.Height := 800;
+  Image1.MultiResBitmap[0].Bitmap.Width := 480;
+  Image1.MultiResBitmap[0].Bitmap.Height := 480;
 
   FaceDetection := TTensorFlowLiteFMX.Create(Self);
   FaceDetection.UseGpu := True;
 
-  FaceDetection.LoadModel('face_detection_160.tflite', 8);
+  FaceDetection.LoadModel('face_detection_192.tflite', 8);
 
+  CameraComponent1.CaptureSettingPriority := TVideoCaptureSettingPriority.FrameRate;
   FPermissionCamera := JStringToString(TJManifest_permission.JavaClass.CAMERA);
   PermissionsService.RequestPermissions([FPermissionCamera], nil, nil);
 end;
