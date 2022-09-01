@@ -74,7 +74,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
-  U: DWORD;
+  I: DWORD;
   FFaceLandmarkData: TFaceLandmarkData;
 begin
   LoadImage;
@@ -86,14 +86,14 @@ begin
     ImageMain.Bitmap.Canvas.Fill.Color := TAlphaColorRec.White;
     ImageMain.Bitmap.Canvas.Stroke.Color := TAlphaColorRec.White;
 
-    for U := 0 to FFaceLandmarkData.Count - 1 do
+    for I := 0 to FFaceLandmarkData.Count - 1 do
     begin
       ImageMain.Bitmap.Canvas.FillRect(
         RectF(
-        FFaceLandmarkData.Points[U].X,
-        FFaceLandmarkData.Points[U].Y,
-        FFaceLandmarkData.Points[U].X + 5,
-        FFaceLandmarkData.Points[U].Y + 5),
+        FFaceLandmarkData.Points[I].X,
+        FFaceLandmarkData.Points[I].Y,
+        FFaceLandmarkData.Points[I].X + 5,
+        FFaceLandmarkData.Points[I].Y + 5),
         0, 0, AllCorners, 1);
     end;
 
