@@ -176,9 +176,6 @@ begin
 
     FaceNet.Inference;
     FaceNet.GetOutputData(0, @FOutputDataA, FaceNet.Output.Tensors[0].DataSize);
-
-    for i := 0 to FaceNetOutputSize - 1 do
-      FEmbedded := FEmbedded + FOutputDataA[i];
   end;
 
   // ImageB
