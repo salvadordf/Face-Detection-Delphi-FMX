@@ -44,6 +44,7 @@ var
   FaceMesh: TTensorFlowLiteFMX;
 
   // MediaPipe Face Mesh v2
+  // https://storage.googleapis.com/mediapipe-assets/Model%20Card%20MediaPipe%20Face%20Mesh%20V2.pdf
   // Undecoded face landmarks. Each landmark contains x, y, and z coordinates
 
 const
