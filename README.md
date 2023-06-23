@@ -9,8 +9,9 @@ Windows 10 x64, inference time (0.0087 sec / 8.7 ms), 110 fps on CPU, AMD Ryzen 
 # Face Mesh
 ![face_mesh0](https://github.com/DonkeySmall/Face-Detection-Delphi-FMX/assets/66531939/06ce9cf4-5449-417f-b380-444ebe812187)
 ![face_mesh2](https://github.com/DonkeySmall/Face-Detection-Delphi-FMX/assets/66531939/4f962091-5239-4a5e-b558-63c923fdcd89)
+# Face Landmark
 ![screen_06](https://user-images.githubusercontent.com/66531939/187872647-7604e0e7-57cc-4554-8f2f-9434178db890.jpg)
-
+# Face Recognition
 ![screen_e](https://user-images.githubusercontent.com/66531939/217205558-0f98799f-c892-433b-8bd1-b07b3eb77328.jpg)
 ![screen_h](https://user-images.githubusercontent.com/66531939/217205566-5ed75910-b671-4ec1-b1e1-65f0d965063a.jpg)
 ![screen_l](https://user-images.githubusercontent.com/66531939/217205570-abf0cd83-4cf6-4479-8419-43515451e080.jpg)
