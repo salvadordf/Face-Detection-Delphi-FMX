@@ -1,0 +1,73 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Face Segmentation'
+  ClientHeight = 609
+  ClientWidth = 597
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object ImageMain: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 581.000000000000000000
+    Size.Height = 551.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button1: TButton
+    Anchors = [akLeft, akBottom]
+    Position.X = 18.000000000000000000
+    Position.Y = 571.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Open Image'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Anchors = [akLeft, akBottom]
+    Position.X = 117.000000000000000000
+    Position.Y = 571.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Segment'
+    OnClick = Button2Click
+  end
+  object OpenDialog: TOpenDialog
+    Left = 139
+    Top = 230
+  end
+  object ImageList: TImageList
+    Source = <
+      item
+        MultiResBitmap = <>
+        Name = 'Source'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'FaceSegment'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'IrisLeft'
+      end
+      item
+        MultiResBitmap = <>
+        Name = 'IrisRight'
+      end>
+    Destination = <>
+    Left = 48
+    Top = 162
+  end
+end
