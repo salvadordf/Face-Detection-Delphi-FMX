@@ -2,6 +2,10 @@
 
 # Face Detection
 ![screen0](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/787fdc88-9942-4832-86d5-fe41ac468f2e)
+# Human Segmentation
+![screen000002](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/9080af4c-4f80-4834-85e9-cacd6e3380da)
+![screen000001](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/8103e2fb-f034-41a2-8f02-32477ade8585)
+![screen000000](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/d3fdc57b-c5d0-477c-94e2-cc602f45a253)
 # MediaPipe 3D Face Mesh
 ![screen2](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/ba3bf493-c7be-4285-89b9-b482a558e2ca)
 ![screen3](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/3919503f-12db-42ee-a288-14e3b9bdfeb6)
