@@ -14,6 +14,10 @@
 ![screen5](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/9430ee9b-1027-4a6d-8347-8ebfe7a523c0)
 ![screen6](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/3c703b18-5693-458b-8247-b93be7c9e0d8)
 ![screen7](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/97bb9c4f-c948-495d-b4de-d9f5042901ea)
+# Teeth Segmentation
+![screen000000](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/0ab2fade-c561-476e-bea5-fc04c2e3ba23)
+![screen000001](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/950c0bea-54fd-4028-89e3-de35b5811f1c)
+![screen000002](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/90af2cb8-d616-4230-974b-e4f72e290957)
 # Face Segmentation
 ![screen8](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/9ce7831c-614a-48e0-930e-b0ad0b3dabde)
 ![screen9](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/5f54d565-4ac2-45d4-827c-f1996d4d1870)
