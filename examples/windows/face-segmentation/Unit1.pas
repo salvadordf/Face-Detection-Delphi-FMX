@@ -332,7 +332,7 @@ begin
   FFilterBlur := TFilterBoxBlur.Create(nil);
 
   FaceSegmentation := TTensorFlowLiteFMX.Create(Self);
-  // https://drive.google.com/file/d/1h9rr233-UT8BtB43tqyJ07QQenBv4-QZ/view?usp=sharing
+  // https://drive.google.com/file/d/1ZpWEK2Gkcv6ct8atLsiiBiC1YTI39_q7/view?usp=sharing
   FaceSegmentation.LoadModel(ModelsPath + 'face_segment.tflite', 12);
 {$ENDIF}
 end;
