@@ -46,8 +46,8 @@ var
   FaceSegmentation: TTensorFlowLiteFMX;
 
 const
-  FaceSegmentationInputSize = 512;
-  FaceSegmentationOutputSize = 512;
+  FaceSegmentationInputSize = 384;
+  FaceSegmentationOutputSize = 384;
 
 type
   PInputDataFaceSegmentation = ^TInputDataFaceSegmentation;
@@ -55,7 +55,7 @@ type
 
 type
   POutputDataFaceSegmentation = ^TOutputDataFaceSegmentation;
-  TOutputDataFaceSegmentation = array [0 .. FaceSegmentationOutputSize * FaceSegmentationOutputSize - 1] of array [0 .. 13 - 1] of Float32;
+  TOutputDataFaceSegmentation = array [0 .. FaceSegmentationOutputSize * FaceSegmentationOutputSize - 1] of array [0 .. 15 - 1] of Float32;
 
 procedure TForm1.LoadImage;
 var
@@ -174,9 +174,9 @@ begin
 
           for X := 0 to FaceSegmentationInputSize - 1 do
           begin
-            FInputData[Y][X][0] := (TAlphaColorRec(FColors[X]).R * 0.0078125) - 1;
-            FInputData[Y][X][1] := (TAlphaColorRec(FColors[X]).G * 0.0078125) - 1;
-            FInputData[Y][X][2] := (TAlphaColorRec(FColors[X]).B * 0.0078125) - 1;
+            FInputData[Y][X][0] := (TAlphaColorRec(FColors[X]).R * 0.0078125);
+            FInputData[Y][X][1] := (TAlphaColorRec(FColors[X]).G * 0.0078125);
+            FInputData[Y][X][2] := (TAlphaColorRec(FColors[X]).B * 0.0078125);
           end;
         end;
 
@@ -332,8 +332,8 @@ begin
   FFilterBlur := TFilterBoxBlur.Create(nil);
 
   FaceSegmentation := TTensorFlowLiteFMX.Create(Self);
-  https://drive.google.com/file/d/1h9rr233-UT8BtB43tqyJ07QQenBv4-QZ/view?usp=sharing
-  //FaceSegmentation.LoadModel(ModelsPath + 'face_segment.tflite', 12);
+  // https://drive.google.com/file/d/1h9rr233-UT8BtB43tqyJ07QQenBv4-QZ/view?usp=sharing
+  FaceSegmentation.LoadModel(ModelsPath + 'face_segment.tflite', 12);
 {$ENDIF}
 end;
 
