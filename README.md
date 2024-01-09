@@ -3,7 +3,7 @@
 # Text Detection
 <b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/3f343dff-3216-4f91-81dd-378afc482f99/XHD000006.jpg" height="240"></b>
 <b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/76883cb1-ed85-4f7b-be5b-767a8df8e6d8/XHD000003.jpg" height="240"></b>
-<b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/76883cb1-ed85-4f7b-be5b-767a8df8e6d8/XHD000001.jpg" height="240"></b>
+<b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/d6f31eec-afa5-41b0-8993-6f2702a965f2/XHD000001.jpg" height="240"></b>
 
 # Face Detection
 ![screen0](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/787fdc88-9942-4832-86d5-fe41ac468f2e)
