@@ -368,7 +368,7 @@ begin
   SetPriorityClass(GetCurrentProcess, HIGH_PRIORITY_CLASS);
   TextDetection := TTensorFlowLiteFMX.Create(Self);
 
-  // download model and put tofolder .../models  -  https://drive.google.com/file/d/1_-Rn9t8UrA22w9SGLuIEuZTeSoTr2v2M/view?usp=sharing
+  // download model and put to folder .../models  -  https://drive.google.com/file/d/1_-Rn9t8UrA22w9SGLuIEuZTeSoTr2v2M/view?usp=sharing
 
   //TextDetection.LoadModel(ModelsPath + 'text_detect.tflite', 12);
 {$ENDIF}
