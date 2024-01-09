@@ -1,8 +1,10 @@
 # Delphi-Tensorflow-Lite
 
 # Text Detection
-![XHD000006](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/4480c910-667f-428d-ba6b-b91caead9878)
-<img src="https://user-images.githubusercontent.com/66531939/279661555-ae6c4225-d960-4b0e-8931-55561b6aab35.jpg" height="30">
+<b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/3f343dff-3216-4f91-81dd-378afc482f99/XHD000006.jpg" height="240"></b>
+<b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/76883cb1-ed85-4f7b-be5b-767a8df8e6d8/XHD000003.jpg" height="240"></b>
+<b><img src="https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/76883cb1-ed85-4f7b-be5b-767a8df8e6d8/XHD000001.jpg" height="240"></b>
+
 # Face Detection
 ![screen0](https://github.com/DonkeySmall/Delphi-Tensorflow-Lite/assets/66531939/787fdc88-9942-4832-86d5-fe41ac468f2e)
 # Human Segmentation
