@@ -336,7 +336,7 @@ begin
         if FStatus <> TFLiteOk then
           Exit;
 
-        FTextList := GetTextList(0.5, 10, FOutputData);
+        FTextList := GetTextList(0.25, 10, FOutputData);
 
         ImageMain.Bitmap.Canvas.BeginScene;
         try
