@@ -378,5 +378,4 @@ procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   TextDetection.Destroy;
 end;
-
 end.
